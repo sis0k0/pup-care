@@ -21,7 +21,7 @@ export class AppController {
     return req.user;
   }
 
-  @Roles('admin')
+  // @Roles('admin')
   @Get('users')
   getUsers(@Request() req) {
     return this.userService.getAll();
