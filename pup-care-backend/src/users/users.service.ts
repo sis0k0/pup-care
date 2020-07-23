@@ -12,21 +12,28 @@ export class UsersService {
         userId: 1,
         username: 'john',
         password: 'changeme',
+        roles: ['admin']
       },
       {
         userId: 2,
         username: 'chris',
         password: 'secret',
+        roles: ['owner']
       },
       {
         userId: 3,
         username: 'maria',
         password: 'guess',
+        roles: ['carer']
       },
     ];
   }
 
   async findOne(username: string): Promise<User | undefined> {
     return this.users.find(user => user.username === username);
+  }
+
+  async getAll(): Promise<User[]> {
+    return this.users;
   }
 }
