@@ -1,5 +1,5 @@
 import { Connection } from 'mongoose';
-import { PetSchema } from '../schemas/pet.schema';
+import { PetSchema } from './schemas/pet.schema';
 
 export const petsProviders = [
   {

@@ -1,6 +1,6 @@
 import { Controller, Post, Body, Get, Query, Param, Put, Delete } from '@nestjs/common';
-import { CreatePetDto } from '../dto/create-pet.dto';
-import { UpdatePetDto } from '../dto/update-pet.dto';
+import { CreatePetDto } from './dto/create-pet.dto';
+import { UpdatePetDto } from './dto/update-pet.dto';
 import { PetService } from './pet.service';
 
 @Controller('pets')
