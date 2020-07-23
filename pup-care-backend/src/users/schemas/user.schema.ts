@@ -14,8 +14,8 @@ export class User extends Document {
 
   @Prop()
   pets: [{
-      type: MongooseSchema.Types.ObjectId,
-      ref: 'Pet'
+    type: MongooseSchema.Types.ObjectId,
+    ref: 'Pet'
   }]
 }
 

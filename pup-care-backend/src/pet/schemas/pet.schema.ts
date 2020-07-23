@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, Schema as MongooseSchema } from 'mongoose';
 
 @Schema()
 export class Pet extends Document {
@@ -14,6 +14,12 @@ export class Pet extends Document {
 
   @Prop({ required: true })
   species: string;
+
+  @Prop()
+  owner: {
+    type: MongooseSchema.Types.ObjectId,
+    ref: 'User'
+  }
 }
 
 export const PetSchema = SchemaFactory.createForClass(Pet);
