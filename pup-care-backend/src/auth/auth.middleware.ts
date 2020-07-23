@@ -7,7 +7,7 @@ import { UsersService } from '../users/users.service';
 
 @Injectable()
 export class AuthMiddleware implements NestMiddleware {
-  constructor(private readonly userService: UsersService) {}
+  constructor(private readonly userService: UsersService) { }
 
   async use(req: Request, res: Response, next: NextFunction) {
     const authHeaders = req.headers.authorization;
@@ -21,7 +21,7 @@ export class AuthMiddleware implements NestMiddleware {
         throw new HttpException('Unauthorized.', HttpStatus.UNAUTHORIZED);
       }
 
-    const user = await this.userService.findOne(decoded.username);
+      const user = await this.userService.findOne(decoded.username);
 
       if (!user) {
         throw new HttpException('User not found.', HttpStatus.UNAUTHORIZED);

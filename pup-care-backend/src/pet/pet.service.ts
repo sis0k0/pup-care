@@ -12,8 +12,8 @@ export class PetService {
   ) { }
 
   async create(createCatDto: CreatePetDto): Promise<Pet> {
-    const createdCat = new this.petModel(createCatDto);
-    return createdCat.save();
+    const createdPet = new this.petModel(createCatDto);
+    return createdPet.save();
   }
 
   async findAll(): Promise<Pet[]> {
