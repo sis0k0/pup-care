@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { isAdmin, isOwner, isCarer } from "./auth/authentication";
 
 export default class Navbar extends Component {
     render() {
+        const admin = isAdmin();
+        const owner = isOwner();
+        const carer = isCarer();
+
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <a className="navbar-brand">PupCare</a>
@@ -15,15 +20,17 @@ export default class Navbar extends Component {
                         {this.props?.profile?.username
                             ? (
                                 <>
-                                    <li className="nav-item active">
+                                    { owner && <li className="nav-item active">
                                         <Link className="nav-link" to="/pets">Pets</Link>
                                     </li>
+                                    }
                                     <li className="nav-item active">
                                         <Link className="nav-link" to="/jobs">Jobs</Link>
                                     </li>
-                                    <li className="nav-item">
+                                    { admin && <li className="nav-item">
                                         <Link className="nav-link" to="/users">Users</Link>
                                     </li>
+                                    }
                                 </>
                             )
                             : (

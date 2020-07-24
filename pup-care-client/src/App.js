@@ -7,6 +7,7 @@ import {
   Route,
 } from "react-router-dom";
 import UsersList from "./UsersList";
+import AddUser from "./users/AddUser";
 import PetsList from "./pets/PetsList";
 import Pet from "./pets/Pet";
 import AddPet from "./pets/AddPet";
@@ -67,6 +68,8 @@ export default class App extends Component {
                 <SignUp />
               </Route>
               <Route path="/pet/:id" component={Pet}>
+              </Route>
+              <Route path="/user-add" component={AddUser}>
               </Route>
               <Route path="/pet-add" component={AddPet}>
               </Route>

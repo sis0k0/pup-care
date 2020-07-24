@@ -15,7 +15,7 @@ class PetList extends React.Component {
   async componentDidMount() {
     const loggedIn = isLoggedIn();
     if (!loggedIn) {
-      this.handleUnauthorized();
+      this.handleUnauthenticated();
       return;
     }
 
@@ -25,7 +25,7 @@ class PetList extends React.Component {
   async componentDidUpdate(prevProps) {
     const currentId = this.props?.profile?._id;
     if (!currentId) {
-      this.handleUnauthorized();
+      this.handleUnauthenticated();
     }
     if (currentId === prevProps?.profile?._id) {
       return;
@@ -34,7 +34,7 @@ class PetList extends React.Component {
     await this.loadPets();
   }
 
-  handleUnauthorized() {
+  handleUnauthenticated() {
     this.props.history.push('/login');
   }
 
