@@ -11,11 +11,12 @@ import PetsList from "./pets/PetsList";
 import Pet from "./pets/Pet";
 import AddPet from "./pets/AddPet";
 import AddJob from "./jobs/AddJob";
+import JobsList from "./jobs/JobsList";
+import JobResult from "./jobs/JobResult";
 import Login from "./auth/Login";
 import SignUp from "./auth/Signup";
 import Navbar from "./Navbar";
 import { getProfile, logOut } from "./auth/authentication";
-import JobResult from "./jobs/JobResult";
 
 export default class App extends Component {
   constructor(props) {
@@ -52,6 +53,9 @@ export default class App extends Component {
               </Route>
               <Route path="/pets">
                 <PetsList profile={this.state.profile} />
+              </Route>
+              <Route path="/jobs">
+                <JobsList profile={this.state.profile} />
               </Route>
               <Route path="/users">
                 <UsersList profile={this.state.profile} />

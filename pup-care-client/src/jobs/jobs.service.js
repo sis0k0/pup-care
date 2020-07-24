@@ -8,6 +8,13 @@ export async function loadJobDetails(id) {
     return job;
 }
 
+export async function loadOwnerJobs(ownerId) {
+    const response = await axios.get(`${baseUrl}/job/owner/${ownerId}`);
+    const jobs = response?.data;
+
+    return jobs;
+}
+
 export async function loadPetJobs(petId) {
     const response = await axios.get(`${baseUrl}/job/pet/${petId}`);
     const jobs = response?.data;

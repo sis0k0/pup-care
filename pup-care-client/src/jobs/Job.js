@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 export default class Job extends Component {
     constructor(props) {
         super(props);
+
         this.state = {};
     }
 
@@ -33,6 +34,12 @@ export default class Job extends Component {
                     <p className="card-text">Approved: {job.approved ? 'Yes': 'No'}</p>
                     { !this.props.hideDetails && this.props.job && <Link to={'/job/'+job._id}>Details</Link> }
                 </div>
+                { this.props.showApply &&
+                <>
+                    this.props.applied ?
+                    <button class="btn btn-danger" onClick={this.props.applied = false}>Unapply</button> :
+                    <button class="btn btn-primary" onClick={this.props.applied = true}>Apply</button>
+                </>}
             </div> : <div><h3>Job not found!</h3></div>
         )
     }

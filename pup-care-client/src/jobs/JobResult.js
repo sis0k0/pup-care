@@ -30,7 +30,7 @@ export default class JobResult extends Component {
             job ? 
             <div className="text-center">
                 <Job job={job} hideDetails />
-                <div class="list-container">
+                {this.state.jobResults.length ? <div class="list-container">
                     <h3>Results</h3>
                     {
                         this.state.jobResults.map(result => (
@@ -43,6 +43,7 @@ export default class JobResult extends Component {
                         ))
                     } 
                 </div>
+                :<></>}
             </div>
             : <div><h3>Job not found!</h3></div>
         )
