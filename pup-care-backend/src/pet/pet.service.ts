@@ -11,8 +11,8 @@ export class PetService {
     private petModel: Model<Pet>,
   ) { }
 
-  async create(createCatDto: CreatePetDto): Promise<Pet> {
-    const createdPet = new this.petModel(createCatDto);
+  async create(createPetDto: CreatePetDto): Promise<Pet> {
+    const createdPet = new this.petModel(createPetDto);
     return createdPet.save();
   }
 

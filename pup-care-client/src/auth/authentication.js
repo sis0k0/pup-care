@@ -4,6 +4,10 @@ import { baseUrl } from '../constants';
 const userTokenKey = 'token';
 const usernameKey = 'username';
 
+export function isLoggedIn() {
+    return !!localStorage.getItem(userTokenKey);
+}
+
 export function logIn(loginData) {
     return axios.post(`${baseUrl}/auth/login`, loginData)
         .then(function (response) {

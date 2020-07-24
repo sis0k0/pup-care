@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { logIn } from './auth/authentication';
+import { logIn, isLoggedIn } from './auth/authentication';
 import { withRouter } from "react-router-dom";
 
 class Login extends Component {
@@ -25,6 +25,13 @@ class Login extends Component {
 
     handleChange(event, label) {
         this.setState({ [label]: event.target.value });
+    }
+
+    componentDidMount() {
+        const loggedIn = isLoggedIn(); 
+        if (loggedIn) {
+            this.props.history.push('/pets');
+        }
     }
 
     render() {

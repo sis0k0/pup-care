@@ -8,9 +8,10 @@ import { RolesGuard } from './auth/roles.guard';
 import { AuthMiddleware } from './auth/auth.middleware';
 import { PetService } from './pet/pet.service';
 import { PetsModule } from './pet/pet.module';
+import { JobModule } from './job/job.module';
 
 @Module({
-  imports: [AuthModule, UsersModule, PetsModule],
+  imports: [AuthModule, UsersModule, PetsModule, JobModule],
   controllers: [AppController],
   providers: [
     AppService,

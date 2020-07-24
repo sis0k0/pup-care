@@ -1,6 +1,7 @@
 import React from "react";
 import axios from 'axios';
 import { baseUrl } from "./constants";
+import { isLoggedIn } from './auth/authentication';
 import { Link, withRouter } from "react-router-dom";
 
 class PetList extends React.Component {
@@ -13,11 +14,10 @@ class PetList extends React.Component {
   }
 
   async componentDidMount() {
-    const currentId = this.props?.profile?._id;
-    console.log(this.props);
-    if (!currentId) {
-      this.props.history.push('/login');
-      return;
+    const loggedIn = isLoggedIn(); 
+    if (!loggedIn) {
+        this.props.history.push('/login');
+        return;
     }
 
     await this.loadPets();
