@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { loadPetDetails } from "./pets/pets.service";
-import { loadPetJobs } from "./jobs/jobs.service";
-import Job from "./Job";
+import { loadPetDetails } from "./pets.service";
+import { loadPetJobs } from "../jobs/jobs.service";
+import Job from "../jobs/Job";
 
 export default class Pet extends Component {
     constructor(props) {
@@ -24,7 +24,7 @@ export default class Pet extends Component {
         return pet ? (
         <div className="list-container">
             <div className="card">
-                <img className="card-img-top img-thumbnail" src={pet.image} alt="Pet photo" />
+                <img className="card-img-top img-thumbnail" src={pet.image} />
                 <div className="card-body">
                     <h5 className="card-title">{pet.name}</h5>
                     <p className="card-text">Age: {pet.age}</p>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { loadJobDetails } from './jobs/jobs.service';
+import { loadJobDetails } from './jobs.service';
 import { Link } from "react-router-dom";
 
 export default class Job extends Component {

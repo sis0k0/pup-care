@@ -7,13 +7,13 @@ import {
   Route,
 } from "react-router-dom";
 import UsersList from "./UsersList";
-import PetsList from "./PetsList";
-import Pet from "./Pet";
-import Login from "./Login";
-import SignUp from "./Signup";
+import PetsList from "./pets/PetsList";
+import Pet from "./pets/Pet";
+import Login from "./auth/Login";
+import SignUp from "./auth/Signup";
 import Navbar from "./Navbar";
 import { getProfile } from "./auth/authentication";
-import JobResult from "./JobResult";
+import JobResult from "./jobs/JobResult";
 
 export default class App extends Component {
   constructor(props) {

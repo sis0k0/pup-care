@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { loadJobDetails, loadJobResults } from './jobs/jobs.service';
+import { loadJobDetails, loadJobResults } from './jobs.service';
 import Job from './Job';
 
 export default class JobResult extends Component {

@@ -1,7 +1,7 @@
 import React from "react";
 import axios from 'axios';
-import { baseUrl } from "./constants";
-import { isLoggedIn } from './auth/authentication';
+import { baseUrl } from "../constants";
+import { isLoggedIn } from '../auth/authentication';
 import { Link, withRouter } from "react-router-dom";
 
 class PetList extends React.Component {
@@ -53,7 +53,7 @@ class PetList extends React.Component {
               <h2 className="text-center">Your pets</h2>
               {this.state.pets.map(pet => 
                 <div className="card">
-                  <img className="card-img-top" src={pet.image} alt="Pet photo" />
+                  <img className="card-img-top" src={pet.image} />
                   <div className="card-body">
                     <h5 className="card-title">{pet.name}</h5>
                     <p className="card-text">Age: {pet.age}</p>
