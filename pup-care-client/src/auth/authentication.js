@@ -64,3 +64,7 @@ export async function getProfile() {
 
     return profile;
 }
+
+export async function register(data) {
+    return axios.post(`${baseUrl}/users`, data);
+}
