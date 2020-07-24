@@ -26,8 +26,11 @@ export class AppModule {
     consumer
       .apply(AuthMiddleware)
       .forRoutes(
-        // {path: 'users', method: RequestMethod.GET},
-        // {path: 'profile', method: RequestMethod.GET});
+        {path: 'users', method: RequestMethod.GET},
+        {path: 'users', method: RequestMethod.POST},
+        {path: 'users', method: RequestMethod.PUT},
+        {path: 'users', method: RequestMethod.DELETE},
+        {path: 'profile/:username', method: RequestMethod.GET}
       )
   }
 }

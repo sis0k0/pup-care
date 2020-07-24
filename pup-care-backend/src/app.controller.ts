@@ -1,4 +1,4 @@
-import { Controller, Request, Post, UseGuards, Get, SetMetadata, Req, Body, Put, Param, Delete } from '@nestjs/common';
+import { Controller, Request, Post, UseGuards, Get, Body, Put, Param, Delete } from '@nestjs/common';
 import { LocalAuthGuard } from './auth/local-auth.guard';
 import { AuthService } from './auth/auth.service';
 import { Roles } from './auth/roles.decorator';
@@ -21,7 +21,7 @@ export class AppController {
     return this.userService.findOne(username);
   }
 
-  // @Roles('admin')
+  @Roles('admin')
   @Get('users')
   getUsers(@Request() req) {
     return this.userService.getAll();
@@ -32,11 +32,13 @@ export class AppController {
     return this.userService.create(createUserDto);
   }
 
+  @Roles('admin')
   @Put('users/:id')
   updateUser(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.userService.update(id, updateUserDto);
   }
 
+  @Roles('admin')
   @Delete('users/:id')
   removeUser(@Param('id') id: string) {
     return this.userService.remove(id);
