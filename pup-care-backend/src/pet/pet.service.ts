@@ -1,4 +1,4 @@
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 import { Injectable, Inject } from '@nestjs/common';
 import { CreatePetDto } from './dto/create-pet.dto';
 import { Pet } from './interfaces/pet';
@@ -30,5 +30,10 @@ export class PetService {
 
   async update(_id: string, update: UpdatePetDto): Promise<Pet> {
     return this.petModel.findOneAndUpdate({ _id }, update);
+  }
+
+  async findUserPets(ownerString: string): Promise<Pet[]> {
+    const ownerId = Types.ObjectId(ownerString);
+    return this.petModel.find({ owner: (<any>ownerId) });
   }
 }

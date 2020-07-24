@@ -21,6 +21,11 @@ export class PetController {
         return pets;
     }
 
+    @Get('/user/:userId')
+    async getUserPets(@Param('userId') userId: string) {
+        return this.petService.findUserPets(userId);
+    }
+
     @Get(':id')
     findOne(@Param('id') id: string) {
         return this.petService.findOne(id);

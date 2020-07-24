@@ -16,9 +16,9 @@ export class AppController {
     return this.authService.login(req.user);
   }
 
-  @Get('profile')
-  getProfile(@Request() req) {
-    return req.user;
+  @Get('profile/:username')
+  getProfile(@Param('username') username: string) {
+    return this.userService.findOne(username);
   }
 
   // @Roles('admin')

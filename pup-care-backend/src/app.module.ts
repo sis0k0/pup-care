@@ -26,6 +26,7 @@ export class AppModule {
       .apply(AuthMiddleware)
       .forRoutes(
         // {path: 'users', method: RequestMethod.GET},
-        {path: 'profile', method: RequestMethod.GET});
+        // {path: 'profile', method: RequestMethod.GET});
+      )
   }
 }

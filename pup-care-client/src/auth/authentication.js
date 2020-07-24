@@ -1,24 +1,30 @@
 import axios from 'axios';
 import { baseUrl } from '../constants';
 
-const userStorageKey = 'currentUser';
+const userTokenKey = 'token';
+const usernameKey = 'username';
 
 export function logIn(loginData) {
     return axios.post(`${baseUrl}/auth/login`, loginData)
         .then(function (response) {
             const token = response?.data?.access_token;
-            localStorage.setItem(userStorageKey, token);
+            localStorage.setItem(userTokenKey, token);
+            localStorage.setItem(usernameKey, loginData?.username);
             return response;
         })
 }
 
 export function logOut() {
-    localStorage.removeItem(userStorageKey);
+    localStorage.removeItem(userTokenKey);
 }
 
-export async function getProfile(username) {
-    const token = localStorage.getItem(userStorageKey);
+export async function getProfile() {
+    const username = localStorage.getItem(usernameKey);
+    const token = localStorage.getItem(userTokenKey);
+
     const headers = { Authorization: `Bearer ${token}` };
     const response = await axios.get(`${baseUrl}/profile/${username}`, headers);
-    return response.data;
+    const profile = response?.data;
+
+    return profile;
 }

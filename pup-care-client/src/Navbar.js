@@ -15,6 +15,7 @@ export default class Navbar extends Component {
                 </button>
 
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <span>{this.props?.profile?.username}</span>
                     <ul className="navbar-nav mr-auto">
                         {this.props?.profile?.username
                             ? (
