@@ -13,6 +13,7 @@ import Login from "./Login";
 import SignUp from "./Signup";
 import Navbar from "./Navbar";
 import { getProfile } from "./auth/authentication";
+import JobResult from "./JobResult";
 
 export default class App extends Component {
   constructor(props) {
@@ -44,6 +45,9 @@ export default class App extends Component {
               <Route path="/pets">
                 <PetsList profile={this.state.profile} />
               </Route>
+              {/* <Route path="/jobs">
+                <JobsList profile={this.state.profile} />
+              </Route> */}
               <Route path="/users">
                 <UsersList profile={this.state.profile} />
               </Route>
@@ -54,6 +58,8 @@ export default class App extends Component {
                 <SignUp />
               </Route>
               <Route path="/pet/:id" component={Pet}>
+              </Route>
+              <Route path="/job/:id" component={JobResult}>
               </Route>
             </Switch>
             </div>

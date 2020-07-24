@@ -3,13 +3,16 @@ import { JobController } from './job.controller';
 import { JobService } from './job.service';
 import { jobsProviders } from './job.providers';
 import { DatabaseModule } from '../database.module';
+import { JobResultService } from './job-result/job-result.service';
+import { JobResultController } from './job-result/job-result.controller';
 
 @Module({
   imports: [DatabaseModule],
-  controllers: [JobController],
+  controllers: [JobController, JobResultController],
   providers: [
     ...jobsProviders,
-    JobService
+    JobService,
+    JobResultService
   ]
 })
 export class JobModule {}

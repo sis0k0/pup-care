@@ -31,7 +31,12 @@ export class Job extends Document {
   applicants: [{
     type: MongooseSchema.Types.ObjectId,
     ref: 'User'
+  }]
 
+  @Prop({ default: [] })
+  jobResults: [{
+    type: MongooseSchema.Types.ObjectId,
+    ref: 'JobResult'
   }]
 }
 

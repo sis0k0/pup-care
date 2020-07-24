@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { loadPetDetails } from "./pets/pets.service";
+import { loadPetJobs } from "./jobs/jobs.service";
+import Job from "./Job";
 
 export default class Pet extends Component {
     constructor(props) {
@@ -12,7 +14,8 @@ export default class Pet extends Component {
         const { id } = params;
 
         const pet = await loadPetDetails(id);
-        this.setState({ pet });
+        const jobs = await loadPetJobs(id);
+        this.setState({ pet, jobs });
     }
 
     render() {
@@ -28,6 +31,9 @@ export default class Pet extends Component {
                     <p className="card-text">Breed: {pet.breed}</p>
                 </div>
             </div>
+
+            <h3>Jobs</h3>
+            {this.state.jobs.map(job => <Job job={job} />)}
         </div>
         ) : <div><h2>Pet not found!</h2></div>;
     }
