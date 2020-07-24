@@ -12,6 +12,13 @@ export class JobService {
   ) { }
 
   async create(createJobDto: CreateJobDto): Promise<Job> {
+    const ownerId = Types.ObjectId(createJobDto.owner);
+    createJobDto.owner = (<any>ownerId);
+    const petId = Types.ObjectId(createJobDto.pet);
+    createJobDto.pet = (<any>petId);
+    const carerId = Types.ObjectId(createJobDto.carer);
+    createJobDto.carer = (<any>carerId);
+
     const createdJob = new this.jobModel(createJobDto);
     return createdJob.save();
   }

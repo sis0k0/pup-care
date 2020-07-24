@@ -1,7 +1,6 @@
 import React from "react";
-import axios from 'axios';
-import { baseUrl } from "../constants";
 import { isLoggedIn } from '../auth/authentication';
+import { loadOwnerPets } from '../pets/pets.service';
 import { Link, withRouter } from "react-router-dom";
 
 class PetList extends React.Component {
@@ -46,8 +45,7 @@ class PetList extends React.Component {
       return <h3>No pets to show!</h3>;
     }
 
-    const response = await axios.get(`${baseUrl}/pets/user/${userId}`);
-    const pets = response.data || [];
+    const pets = await loadOwnerPets(userId);
     this.setState({ pets });
   }
 

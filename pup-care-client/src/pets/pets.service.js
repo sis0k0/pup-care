@@ -11,3 +11,10 @@ export async function loadPetDetails(id) {
 export function addPet(data) {
     return axios.post(`${baseUrl}/pets`, data);
 }
+
+export async function loadOwnerPets(userId) {
+    const response = await axios.get(`${baseUrl}/pets/user/${userId}`);
+    const pets = response.data || [];
+
+    return pets;
+}

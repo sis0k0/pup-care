@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { loadPetDetails } from "./pets.service";
 import { loadPetJobs } from "../jobs/jobs.service";
 import Job from "../jobs/Job";
+import { Link } from "react-router-dom";
 
 export default class Pet extends Component {
     constructor(props) {
@@ -22,7 +23,7 @@ export default class Pet extends Component {
         const pet = this.state?.pet;
 
         return pet ? (
-        <div className="list-container">
+        <div className="text-center list-container">
             <div className="card">
                 <img className="card-img-top img-thumbnail" src={pet.image} />
                 <div className="card-body">
@@ -33,6 +34,7 @@ export default class Pet extends Component {
             </div>
 
             <h3>Jobs</h3>
+            <Link to="/job-add"><button className="btn btn-primary">Add Job</button></Link>
             {this.state.jobs.map(job => <Job job={job} />)}
         </div>
         ) : <div><h2>Pet not found!</h2></div>;

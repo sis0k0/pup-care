@@ -3,8 +3,8 @@ import { Schema } from "mongoose";
 export class CreateJobDto {
   date: Date;
   approved: boolean;
-  owner: Schema.Types.ObjectId;
-  pet: Schema.Types.ObjectId;
-  carer: Schema.Types.ObjectId;
+  owner: string;
+  pet: string;
+  carer: string;
   applicants: Schema.Types.ObjectId[];
 }

@@ -21,3 +21,7 @@ export async function loadJobResults(id) {
 
     return jobResults;
 }
+
+export async function addJob(data) {
+    return axios.post(`${baseUrl}/job`, data);
+}

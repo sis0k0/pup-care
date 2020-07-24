@@ -10,6 +10,7 @@ import UsersList from "./UsersList";
 import PetsList from "./pets/PetsList";
 import Pet from "./pets/Pet";
 import AddPet from "./pets/AddPet";
+import AddJob from "./jobs/AddJob";
 import Login from "./auth/Login";
 import SignUp from "./auth/Signup";
 import Navbar from "./Navbar";
@@ -64,6 +65,8 @@ export default class App extends Component {
               <Route path="/pet/:id" component={Pet}>
               </Route>
               <Route path="/pet-add" component={AddPet}>
+              </Route>
+              <Route path="/job-add" component={AddJob}>
               </Route>
               <Route path="/job/:id" component={JobResult}>
               </Route>
