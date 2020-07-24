@@ -61,7 +61,7 @@ class UsersList extends React.Component {
                 <h5 className="card-title">{user.username}</h5>
                 <p className="card-text">Roles: {user.roles.join(', ')}</p>
               </div>
-              {/* <button className="btn btn-danger" onClick={() => this.onDeleteUser(user._id)}>Delete</button> */}
+              <button className="btn btn-danger">Delete</button>
             </div>
           )}
         </div>
