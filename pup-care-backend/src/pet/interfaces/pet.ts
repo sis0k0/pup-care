@@ -6,4 +6,5 @@ export interface Pet extends Document {
     readonly age: number;
     readonly species: string;
     readonly owner: Schema.Types.ObjectId,
+    readonly image: String;
 }

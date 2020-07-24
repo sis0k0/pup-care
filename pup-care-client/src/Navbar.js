@@ -11,7 +11,6 @@ export default class Navbar extends Component {
                 </button>
 
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <span>{this.props?.profile?.username}</span>
                     <ul className="navbar-nav mr-auto">
                         {this.props?.profile?.username
                             ? (
@@ -36,6 +35,16 @@ export default class Navbar extends Component {
                             )
                         }
                     </ul>
+                    <form className="form-inline my-2 my-lg-0">
+                            {this.props?.profile?.username &&
+                                <>
+                                    <span>{this.props?.profile?.username} ({this.props?.profile?.roles.join(', ')})</span>
+                                    <span className="nav-item" onClick={this.props.onLogOut}>
+                                        <a href="#" className="nav-link">Log out</a>
+                                    </span>
+                                </>
+                            }
+                    </form>
                 </div>
             </nav>
         );

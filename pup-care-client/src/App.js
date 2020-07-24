@@ -9,10 +9,11 @@ import {
 import UsersList from "./UsersList";
 import PetsList from "./pets/PetsList";
 import Pet from "./pets/Pet";
+import AddPet from "./pets/AddPet";
 import Login from "./auth/Login";
 import SignUp from "./auth/Signup";
 import Navbar from "./Navbar";
-import { getProfile } from "./auth/authentication";
+import { getProfile, logOut } from "./auth/authentication";
 import JobResult from "./jobs/JobResult";
 
 export default class App extends Component {
@@ -21,6 +22,7 @@ export default class App extends Component {
     this.state = { profile: {} };
 
     this.handleUserChanged = this.handleUserChanged.bind(this);
+    this.handleLogOut = this.handleLogOut.bind(this);
   }
 
   async componentDidMount() {
@@ -32,10 +34,15 @@ export default class App extends Component {
     this.setState({ profile });
   }
 
+  async handleLogOut() {
+    logOut();
+    this.setState({ profile: {} });
+  }
+
   render() {
     return (
       <Router>
-        <Navbar profile={this.state.profile} />
+        <Navbar onLogOut={this.handleLogOut} profile={this.state.profile} />
         <div className="container">
           <div>
             <Switch>
@@ -45,9 +52,6 @@ export default class App extends Component {
               <Route path="/pets">
                 <PetsList profile={this.state.profile} />
               </Route>
-              {/* <Route path="/jobs">
-                <JobsList profile={this.state.profile} />
-              </Route> */}
               <Route path="/users">
                 <UsersList profile={this.state.profile} />
               </Route>
@@ -58,6 +62,8 @@ export default class App extends Component {
                 <SignUp />
               </Route>
               <Route path="/pet/:id" component={Pet}>
+              </Route>
+              <Route path="/pet-add" component={AddPet}>
               </Route>
               <Route path="/job/:id" component={JobResult}>
               </Route>

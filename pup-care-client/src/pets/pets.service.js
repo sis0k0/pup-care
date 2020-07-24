@@ -7,3 +7,7 @@ export async function loadPetDetails(id) {
 
     return pet;
 }
+
+export function addPet(data) {
+    return axios.post(`${baseUrl}/pets`, data);
+}

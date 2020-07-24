@@ -16,6 +16,9 @@ export class Pet extends Document {
   species: string;
 
   @Prop()
+  image: string;
+
+  @Prop()
   owner: {
     type: MongooseSchema.Types.ObjectId,
     ref: 'User'

@@ -12,6 +12,8 @@ export class PetService {
   ) { }
 
   async create(createPetDto: CreatePetDto): Promise<Pet> {
+    const ownerId = Types.ObjectId(createPetDto.owner);
+    createPetDto.owner = (<any>ownerId);
     const createdPet = new this.petModel(createPetDto);
     return createdPet.save();
   }

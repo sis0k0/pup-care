@@ -5,5 +5,6 @@ export class UpdatePetDto {
   breed: string;
   age: number;
   species: string;
+  image: string;
   owner: Schema.Types.ObjectId;
 }
