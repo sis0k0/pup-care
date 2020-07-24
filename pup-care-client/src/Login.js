@@ -1,20 +1,45 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { logIn } from './auth/authentication';
+import { withRouter } from "react-router-dom";
 
-export default class Login extends Component {
+class Login extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: '',
+            password: ''
+        };
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        logIn(this.state).then(() => {
+            this.props.onUserChange(this.state.username);
+            this.props.history.push('/pets');
+        }).catch((e) => alert(e.message));
+    }
+
+    handleChange(event, label) {
+        this.setState({ [label]: event.target.value });
+    }
+
     render() {
         return (
-            <form>
+            <form onSubmit={this.handleSubmit}>
                 <h3>Login</h3>
 
                 <div className="form-group">
                     <label>Username</label>
-                    <input type="text" className="form-control" placeholder="Enter username" />
+                    <input onChange={event => this.handleChange(event, 'username')} type="text" className="form-control" placeholder="Enter username" />
                 </div>
 
                 <div className="form-group">
                     <label>Password</label>
-                    <input type="password" className="form-control" placeholder="Enter password" />
+                    <input onChange={event => this.handleChange(event, 'password')} type="password" className="form-control" placeholder="Enter password" />
                 </div>
 
                 <div className="form-group">
@@ -32,3 +57,5 @@ export default class Login extends Component {
         );
     }
 }
+
+export default withRouter(Login);
